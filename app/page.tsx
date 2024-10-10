@@ -1,8 +1,10 @@
+'use client';
 import React from 'react';
 import Navbar from '@/components/shared/navbar/navbar';
 import CodeBox from '@/components/home/CodeBox/CodeBox';
 import Dock from '@/components/home/Dock/Dock';
 import Image from 'next/image';
+import CalendarComponent from '@/components/home/CodeBox/CalendarComponent';
 
 function Home() {
   return (
@@ -18,6 +20,7 @@ function Home() {
       </div>
       <Navbar />
       <CodeBox />
+      <CalendarComponent/>
       <Dock />
     </div>
   );
