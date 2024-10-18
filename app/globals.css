@@ -111,3 +111,28 @@ body {
   margin-top: 10px;
 }
 
+body.dark {
+  background-color: #111;
+  color: #fff;
+}
+
+body.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar.dark {
+  background-color: #333;
+}
+
+.navbar.light {
+  background-color: #fff;
+}
+
+.main-content.dark {
+  background-color: #222;
+}
+
+.main-content.light {
+  background-color: #f9f9f9;
+}

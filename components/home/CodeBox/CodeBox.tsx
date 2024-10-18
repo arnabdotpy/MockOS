@@ -43,6 +43,8 @@ const CodeBox: React.FC = () => {
       output = 'Root directory not configured, kindly contact maintainer.';
     } else if (terminalInput === 'nuxt') {
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    } else if (terminalInput === 'jesus') {
+      window.location.href === "https://www.youtube.com/watch?v=LsGcIkevyHM";
     } else {
       output = 'Command not recognized';
     }
