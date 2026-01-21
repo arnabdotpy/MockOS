@@ -19,7 +19,9 @@ function Home() {
         />
       </div>
       <Navbar />
-      <CodeBox />
+      <CodeBox toggleWindow={function (): void {
+        throw new Error('Function not implemented.');
+      } } isClosed={false} />
       <CalendarComponent/>
       <Dock />
     </div>

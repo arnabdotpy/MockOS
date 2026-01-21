@@ -6,22 +6,16 @@ interface TerminalHistory {
   output: string;
 }
 
-const CodeBox: React.FC = () => {
-  const [isClosed, setIsClosed] = useState<boolean>(false);  // Track whether the window is closed
+interface CodeBoxProps {
+  toggleWindow: () => void;
+  isClosed: boolean;
+}
+
+const CodeBox: React.FC<CodeBoxProps> = ({ toggleWindow, isClosed }) => {
   const [currentPage, setCurrentPage] = useState<string>('index.js');
   const [isTerminalActive, setIsTerminalActive] = useState<boolean>(false);
   const [terminalInput, setTerminalInput] = useState<string>('');
   const [terminalHistory, setTerminalHistory] = useState<TerminalHistory[]>([]);
-
-  // Function to close the window
-  const handleCloseClick = () => {
-    setIsClosed(true);
-  };
-
-  // Function to open the window again
-  const handleReopenClick = () => {
-    setIsClosed(false);
-  };
 
   const handleTerminalClick = () => {
     setIsTerminalActive(true);
@@ -44,9 +38,9 @@ const CodeBox: React.FC = () => {
     } else if (terminalInput === 'nuxt') {
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     } else if (terminalInput === 'jesus') {
-      window.location.href === "https://www.youtube.com/watch?v=LsGcIkevyHM";
+      window.location.href = "https://www.youtube.com/watch?v=LsGcIkevyHM";
     } else if (terminalInput === 'new window') {
-      window.location.href === "https://mock-os-iota.vercel.app/";
+      window.location.href = "https://mock-os-iota.vercel.app/";
     } else {
       output = 'Command not recognized';
     }
@@ -99,15 +93,7 @@ const CodeBox: React.FC = () => {
 
   return (
     <div className="h-screen flex justify-center items-center relative">
-      
-      {isClosed ? (
-        <button
-          onClick={handleReopenClick}
-          className="bg-blue-500 text-white p-2 rounded-md absolute bottom-10 left-10"
-        >
-          Reopen Window
-        </button>        
-      ) : (
+      {!isClosed && (
         <Draggable handle=".handle-drag">
           <div className="bg-gray-800 rounded-lg shadow-xl p-4 relative" style={codeEditorStyles}>
             <div
@@ -116,7 +102,10 @@ const CodeBox: React.FC = () => {
             >
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div className="flex gap-1">
-                  <div className="w-2.5 h-2.5 bg-red-500 rounded-full cursor-pointer" onClick={handleCloseClick}></div>
+                  <div
+                    className="w-2.5 h-2.5 bg-red-500 rounded-full cursor-pointer"
+                    onClick={toggleWindow}
+                  ></div>
                   <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full"></div>
                   <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
                 </div>
